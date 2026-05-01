@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatLens – Log Analyzer & Attack Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1>ThreatLens</h1>
+            </div>
+            <p class="subtitle">Log Analyzer & Attack Detector</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="section-header">
+                    <h2>Log Input</h2>
+                    <div class="buttons">
+                        <button id="sampleBtn" class="btn btn-secondary">
+                            <span class="btn-icon">📋</span> Load Sample Logs
+                        </button>
+                        <button id="analyzeBtn" class="btn btn-primary">
+                            <span class="btn-icon">🔍</span> Analyze Logs
+                        </button>
+                        <button id="clearBtn" class="btn btn-danger">
+                            <span class="btn-icon">🗑️</span> Clear
+                        </button>
+                    </div>
+                </div>
+                <textarea id="logInput" class="log-input" placeholder="Paste your log entries here...&#10;&#10;Example formats:&#10;2024-01-15 10:23:45 FAILED LOGIN from 192.168.1.100&#10;2024-01-15 10:24:12 SUCCESS LOGIN from 10.0.0.5&#10;2024-01-15 10:25:33 ERROR: Unauthorized access attempt from 192.168.1.100"></textarea>
+            </section>
+
+            <!-- Analysis Results -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <!-- Summary Dashboard -->
+                <div class="summary-dashboard">
+                    <div class="summary-card alert-card">
+                        <div class="summary-icon">⚠️</div>
+                        <div class="summary-info">
+                            <span class="summary-value" id="totalAlerts">0</span>
+                            <span class="summary-label">Total Alerts</span>
+                        </div>
+                    </div>
+                    <div class="summary-card danger-card">
+                        <div class="summary-icon">🔴</div>
+                        <div class="summary-info">
+                            <span class="summary-value" id="criticalAlerts">0</span>
+                            <span class="summary-label">Critical</span>
+                        </div>
+                    </div>
+                    <div class="summary-card warning-card">
+                        <div class="summary-icon">🟡</div>
+                        <div class="summary-info">
+                            <span class="summary-value" id="warningAlerts">0</span>
+                            <span class="summary-label">Warnings</span>
+                        </div>
+                    </div>
+                    <div class="summary-card ip-card">
+                        <div class="summary-icon">🌐</div>
+                        <div class="summary-info">
+                            <span class="summary-value" id="affectedIPs">0</span>
+                            <span class="summary-label">Affected IPs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Panel -->
+                <div class="alerts-panel">
+                    <h3>🚨 Security Alerts</h3>
+                    <div id="alertsList" class="alerts-list">
+                        <!-- Alerts will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Affected IPs Panel -->
+                <div class="ips-panel">
+                    <h3>🌐 Suspicious IP Addresses</h3>
+                    <div id="ipsList" class="ips-list">
+                        <!-- IPs will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Log Viewer with Highlights -->
+            <section class="viewer-section" id="viewerSection" style="display: none;">
+                <div class="section-header">
+                    <h2>Analyzed Logs</h2>
+                    <div class="legend">
+                        <span class="legend-item"><span class="legend-color danger"></span> Critical</span>
+                        <span class="legend-item"><span class="legend-color warning"></span> Warning</span>
+                        <span class="legend-item"><span class="legend-color normal"></span> Normal</span>
+                    </div>
+                </div>
+                <div id="logViewer" class="log-viewer">
+                    <!-- Highlighted logs will be displayed here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>ThreatLens v1.0 | Security Log Analysis Tool | Built with Vanilla JS</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
